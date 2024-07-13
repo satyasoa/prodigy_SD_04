@@ -11,15 +11,12 @@ def find_empty_location(grid):
     return None
 
 def is_safe(grid, row, col, num):
-    # Check row
     if any(grid[row][x] == num for x in range(9)):
         return False
 
-    # Check column
     if any(grid[x][col] == num for x in range(9)):
         return False
 
-    # Check 3x3 sub-grid
     start_row, start_col = 3 * (row // 3), 3 * (col // 3)
     for i in range(3):
         for j in range(3):
@@ -42,11 +39,10 @@ def solve_sudoku(grid):
             if solve_sudoku(grid):
                 return True
 
-            grid[row][col] = 0  # Backtrack
+            grid[row][col] = 0  
 
     return False
 
-# Example usage:
 if __name__ == "__main__":
     sudoku_grid = [
         [5, 3, 0, 0, 7, 0, 0, 0, 0],
